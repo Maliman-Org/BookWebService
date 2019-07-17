@@ -19,7 +19,7 @@ import java.util.List;
  *
  * @author Manno
  */
-public class FXMLDocumentController implements Initializable {
+public class MainPageController implements Initializable {
 
     BookWs stub;
 
