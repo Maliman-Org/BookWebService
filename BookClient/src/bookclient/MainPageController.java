@@ -12,8 +12,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import booksservice.*;
+import com.jfoenix.controls.JFXTextField;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 /**
  *
@@ -22,6 +26,53 @@ import java.util.List;
 public class MainPageController implements Initializable {
 
     BookWs stub;
+     @FXML
+    private JFXTextField bookIndicationEDTX;
+
+    @FXML
+    private VBox bookContainer1;
+
+    @FXML
+    private ImageView bookImg1;
+
+    @FXML
+    private Label bookTitleLabel1;
+
+    @FXML
+    private ImageView likeIcon1;
+
+    @FXML
+    private Label likeNumLabel2;
+
+    @FXML
+    private ImageView dislikeIcon1;
+
+    @FXML
+    private Label dislikeNumLabel1;
+
+    @FXML
+    private VBox bookContainer2;
+
+    @FXML
+    private ImageView bookImg2;
+
+    @FXML
+    private Label bookTitleLabel2;
+
+    @FXML
+    private ImageView likeIcon2;
+
+    @FXML
+    private ImageView dislikeIcon2;
+
+    @FXML
+    private Label dislikeNumLabel2;
+
+    @FXML
+    void search(MouseEvent event) {
+
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
