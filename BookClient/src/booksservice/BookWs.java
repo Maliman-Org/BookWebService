@@ -42,33 +42,6 @@ public interface BookWs {
 
     /**
      * 
-     * @return
-     *     returns booksservice.Book
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getBook", targetNamespace = "http://booksservice/", className = "booksservice.GetBook")
-    @ResponseWrapper(localName = "getBookResponse", targetNamespace = "http://booksservice/", className = "booksservice.GetBookResponse")
-    @Action(input = "http://booksservice/BookWs/getBookRequest", output = "http://booksservice/BookWs/getBookResponse")
-    public Book getBook();
-
-    /**
-     * 
-     * @param language
-     * @return
-     *     returns java.util.List<booksservice.Book>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "searchBooks", targetNamespace = "http://booksservice/", className = "booksservice.SearchBooks")
-    @ResponseWrapper(localName = "searchBooksResponse", targetNamespace = "http://booksservice/", className = "booksservice.SearchBooksResponse")
-    @Action(input = "http://booksservice/BookWs/searchBooksRequest", output = "http://booksservice/BookWs/searchBooksResponse")
-    public List<Book> searchBooks(
-        @WebParam(name = "language", targetNamespace = "")
-        String language);
-
-    /**
-     * 
      * @param book
      * @param iLike
      * @return
@@ -84,5 +57,20 @@ public interface BookWs {
         Book book,
         @WebParam(name = "iLike", targetNamespace = "")
         boolean iLike);
+
+    /**
+     * 
+     * @param language
+     * @return
+     *     returns java.util.List<booksservice.Book>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "searchBooks", targetNamespace = "http://booksservice/", className = "booksservice.SearchBooks")
+    @ResponseWrapper(localName = "searchBooksResponse", targetNamespace = "http://booksservice/", className = "booksservice.SearchBooksResponse")
+    @Action(input = "http://booksservice/BookWs/searchBooksRequest", output = "http://booksservice/BookWs/searchBooksResponse")
+    public List<Book> searchBooks(
+        @WebParam(name = "language", targetNamespace = "")
+        String language);
 
 }

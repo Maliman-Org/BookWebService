@@ -27,8 +27,6 @@ public class ObjectFactory {
     private final static QName _CancelRate_QNAME = new QName("http://booksservice/", "cancelRate");
     private final static QName _LikeResponse_QNAME = new QName("http://booksservice/", "likeResponse");
     private final static QName _SearchBooks_QNAME = new QName("http://booksservice/", "searchBooks");
-    private final static QName _GetBook_QNAME = new QName("http://booksservice/", "getBook");
-    private final static QName _GetBookResponse_QNAME = new QName("http://booksservice/", "getBookResponse");
     private final static QName _Book_QNAME = new QName("http://booksservice/", "Book");
     private final static QName _CancelRateResponse_QNAME = new QName("http://booksservice/", "cancelRateResponse");
     private final static QName _Like_QNAME = new QName("http://booksservice/", "like");
@@ -39,22 +37,6 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link GetBookResponse }
-     * 
-     */
-    public GetBookResponse createGetBookResponse() {
-        return new GetBookResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetBook }
-     * 
-     */
-    public GetBook createGetBook() {
-        return new GetBook();
     }
 
     /**
@@ -138,24 +120,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://booksservice/", name = "searchBooks")
     public JAXBElement<SearchBooks> createSearchBooks(SearchBooks value) {
         return new JAXBElement<SearchBooks>(_SearchBooks_QNAME, SearchBooks.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetBook }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://booksservice/", name = "getBook")
-    public JAXBElement<GetBook> createGetBook(GetBook value) {
-        return new JAXBElement<GetBook>(_GetBook_QNAME, GetBook.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetBookResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://booksservice/", name = "getBookResponse")
-    public JAXBElement<GetBookResponse> createGetBookResponse(GetBookResponse value) {
-        return new JAXBElement<GetBookResponse>(_GetBookResponse_QNAME, GetBookResponse.class, null, value);
     }
 
     /**

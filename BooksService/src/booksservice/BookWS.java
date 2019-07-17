@@ -61,21 +61,22 @@ public class BookWS {
         if (liked) {
             b = increase(book, true);
         } else {
-            b = decrease(book, false);
+            b = increase(book, false);
         }
         return b;
     }
 
     @WebMethod(operationName = "searchBooks")
+    
     public ArrayList<Book> getBooks(@WebParam(name = "language") String indication) {
         try {
             ArrayList<Book> list = new ArrayList<>();
             Book aBook;
-            String query = "select * from livre where ";//title like %`" + indication + "`%";
+            String query = "SELECT * FROM `livre` WHERE `title` LIKE '%"+indication+"%'";
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 aBook = new Book(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3),
-                        resultSet.getInt(4), resultSet.getInt(5));
+                        resultSet.getInt(4), resultSet.getInt(5),resultSet.getDate(6));
                 list.add(aBook);
             }
             return list;
@@ -86,11 +87,6 @@ public class BookWS {
         return null;
     }
 
-    @WebMethod
-    public Book getBook(){
-        return new Book(0, DATABASE_USER, 0, 0, 0);
-        
-    }
     private boolean increase(Book book, boolean like) {
 
         try {
@@ -108,6 +104,8 @@ public class BookWS {
                 if (preparedStatement.executeUpdate() == 0) {
                     return false;
                 } else {
+                    if(like) book.setUserRate(1);
+                    else book.setUserRate(2);
                     return true;
                 }
             } catch (SQLException ex) {
@@ -136,6 +134,7 @@ public class BookWS {
                 if (preparedStatement.executeUpdate() == 0) {
                     return false;
                 } else {
+                    book.setUserRate(1);
                     return true;
                 }
             } catch (SQLException ex) {

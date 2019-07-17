@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="likeNum" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="dislikeNum" type="{http://www.w3.org/2001/XMLSchema}int"/>
@@ -30,6 +31,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "book", propOrder = {
+    "id",
     "title",
     "likeNum",
     "dislikeNum",
@@ -37,10 +39,27 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Book {
 
+    protected int id;
     protected String title;
     protected int likeNum;
     protected int dislikeNum;
     protected int userRate;
+
+    /**
+     * Obtient la valeur de la propriété id.
+     * 
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Définit la valeur de la propriété id.
+     * 
+     */
+    public void setId(int value) {
+        this.id = value;
+    }
 
     /**
      * Obtient la valeur de la propriété title.

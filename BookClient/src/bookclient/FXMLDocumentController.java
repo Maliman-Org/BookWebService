@@ -21,10 +21,12 @@ import java.util.List;
  */
 public class FXMLDocumentController implements Initializable {
 
+    BookWs stub;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        BookWs stub = new BookWSService().getBookWsPort();
-        System.out.println(stub.getBook().getTitle());
+        stub = new BookWSService().getBookWsPort();
+
     }
 
 }

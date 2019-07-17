@@ -31,7 +31,7 @@ public class BookClient extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //cd C:\Users\Manno\Documents\BookClient\src\
+        //cd C:\Users\Manno\Documents\GitHub\BookWebService\BookClient\src\
         // wsimport -Xnocompile http://localhost:8585/BookWS?wsdl
         launch(args);
     }
