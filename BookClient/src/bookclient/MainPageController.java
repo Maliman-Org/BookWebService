@@ -62,7 +62,7 @@ public class MainPageController implements Initializable {
     private Label bookTitleLabel2;
 
     @FXML
-    private ImageView likeIcon2;
+    private ImageView likeIcon2,loupeImg;
 
     @FXML
     private ImageView dislikeIcon2, searchBtn;
@@ -95,6 +95,7 @@ public class MainPageController implements Initializable {
             if (book1 != null) {
                 if (book1.getUserRate() == 2) {
                     stub.cancelRate(book1);
+                    updateTheList();
                     return;
                 }
                 if (book1.getUserRate() != 0) {
@@ -111,6 +112,7 @@ public class MainPageController implements Initializable {
             if (book2 != null) {
                 if (book2.getUserRate() == 2) {
                     stub.cancelRate(book2);
+                    updateTheList();
                     return;
                 }
                 if (book2.getUserRate() != 0) {
@@ -127,6 +129,7 @@ public class MainPageController implements Initializable {
             if (book1 != null) {
                 if (book1.getUserRate() == 1) {
                     stub.cancelRate(book1);
+                    updateTheList();
                     return;
                 }
                 if (book1.getUserRate() != 0) {
@@ -141,8 +144,9 @@ public class MainPageController implements Initializable {
         });
         likeIcon2.setOnMouseClicked(e -> {
             if (book2 != null) {
-                if (book1.getUserRate() == 1) {
+                if (book2.getUserRate() == 1) {
                     stub.cancelRate(book2);
+                    updateTheList();
                     return;
                 }
                 if (book2.getUserRate() != 0 && book2.getUserRate() != 1) {
@@ -160,54 +164,55 @@ public class MainPageController implements Initializable {
 
     private void updateTheList() {
         if (indication != null) {
-            List<Book> list = stub.searchBooks(indication);
+            List<Book> list = stub.searchBooks(indication.trim().toLowerCase());
             if (list.size() > 0) {
+                loupeImg.setVisible(false);
                 msgLabel.setVisible(false);
                 bookContainer1.setVisible(true);
                 book1 = list.get(0);
                 likeNumLabel1.setText(String.valueOf(book1.getLikeNum()));
                 dislikeNumLabel1.setText(String.valueOf(book1.getDislikeNum()));
                 bookTitleLabel1.setText(book1.getTitle());
-                bookImg1.setImage(new Image("http://localhost/Books" + book1.getId() + ".jpg"));
+                bookImg1.setImage(new Image("http://localhost/Books/" + book1.getId()+ ".jpg"));
                 if (book1.getUserRate() > 0) {
                     
                     if (book1.getUserRate() == 1) {
                         //like
-                        likeIcon1.setImage(new Image("\\Images\\thumbs-up-hand-symbol"));
-                        dislikeIcon1.setImage(new Image("\\Images\\thumb-down.png"));
+                        likeIcon1.setImage(new Image("http://localhost/Books/"+"thumbs-up-hand-symbol.png"));
+                        dislikeIcon1.setImage(new Image("http://localhost/Books/"+"thumb-down.png"));
                     } else {
                         //dislike
-                        likeIcon1.setImage(new Image("\\Images\\thumbs-up.png"));
-                        dislikeIcon1.setImage(new Image("\\Images\\thumbs-down-silhouette"));
+                        likeIcon1.setImage(new Image("http://localhost/Books/"+"thumbs-up.png"));
+                        dislikeIcon1.setImage(new Image("http://localhost/Books/"+"thumbs-down-silhouette.png"));
                     }
                 } else {
                     //none
-                    likeIcon1.setImage(new Image("\\Images\\thumbs-up.png"));
-                    dislikeIcon1.setImage(new Image("\\Images\\thumb-down.png"));
+                    likeIcon1.setImage(new Image("http://localhost/Books/"+"thumbs-up.png"));
+                    dislikeIcon1.setImage(new Image("http://localhost/Books/"+"thumb-down.png"));
                 }
                 if (list.size() >= 2) {
                     msgLabel.setVisible(true);
                     msgLabel.setText("Here are the related TOP 2 Books");
                     bookContainer2.setVisible(true);
-                    book2 = list.get(2);
+                    book2 = list.get(1);
                     likeNumLabel2.setText(String.valueOf(book2.getLikeNum()));
                     dislikeNumLabel2.setText(String.valueOf(book2.getDislikeNum()));
-                    bookTitleLabel2.setText(list.get(1).getTitle());
-                    bookImg1.setImage(new Image("http://localhost/Books" + list.get(0).getId() + ".jpg"));
+                    bookTitleLabel2.setText(book2.getTitle());
+                    bookImg2.setImage(new Image("http://localhost/Books/" + book2.getId()+ ".jpg"));
                     if (book2.getUserRate() > 0) {
                         if (book2.getUserRate() == 1) {
                             //like
-                            likeIcon2.setImage(new Image("\\Images\\thumbs-up-hand-symbol"));
-                            dislikeIcon2.setImage(new Image("\\Images\\thumb-down.png"));
+                            likeIcon2.setImage(new Image("http://localhost/Books/"+"thumbs-up-hand-symbol.png"));
+                            dislikeIcon2.setImage(new Image("http://localhost/Books/"+"thumb-down.png"));
                         } else {
                             //dislike
-                            likeIcon2.setImage(new Image("\\Images\\thumbs-up.png"));
-                            dislikeIcon2.setImage(new Image("\\Images\\thumbs-down-silhouette"));
+                            likeIcon2.setImage(new Image("http://localhost/Books/"+"thumbs-up.png"));
+                            dislikeIcon2.setImage(new Image("http://localhost/Books/"+"thumbs-down-silhouette.png"));
                         }
                     } else {
                         //none
-                        likeIcon2.setImage(new Image("\\Images\\thumbs-up.png"));
-                        dislikeIcon2.setImage(new Image("\\Images\\thumb-down.png"));
+                        likeIcon2.setImage(new Image("http://localhost/Books/"+"thumbs-up.png"));
+                        dislikeIcon2.setImage(new Image("http://localhost/Books/"+"thumb-down.png"));
                     }
                 } else {
                     bookContainer2.setVisible(false);

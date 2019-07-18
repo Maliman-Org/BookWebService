@@ -72,7 +72,7 @@ public class BookWS {
         try {
             ArrayList<Book> list = new ArrayList<>();
             Book aBook;
-            String query = "SELECT * FROM `livre` WHERE `title` LIKE '%"+indication+"%'";
+            String query = "SELECT * FROM `livre` WHERE `title` LIKE '%"+indication+"%' ORDER BY `livre`.`likes` DESC";
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 aBook = new Book(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3),
