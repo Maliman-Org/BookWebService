@@ -16,6 +16,7 @@ import com.jfoenix.controls.JFXTextField;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.geometry.Pos;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
@@ -63,21 +64,25 @@ public class MainPageController implements Initializable {
     private ImageView likeIcon2;
 
     @FXML
-    private ImageView dislikeIcon2;
+    private ImageView dislikeIcon2,searchBtn;
 
     @FXML
     private Label dislikeNumLabel2,msgLabel;
 
     @FXML
-    void search(MouseEvent event) {
-
+    public void search(MouseEvent event) {
+        
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         stub = new BookWSService().getBookWsPort();
-
+        msgLabel.setAlignment(Pos.CENTER);
+        bookTitleLabel1.setAlignment(Pos.CENTER);
+        bookTitleLabel2.setAlignment(Pos.CENTER);
+        
     }
+    
 
 }
