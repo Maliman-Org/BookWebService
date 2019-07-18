@@ -62,7 +62,7 @@
                                                 <Image url="@../Images/thumbs-up.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="likeNumLabel2" text="160 " textFill="#b5b3b3">
+                                          <Label fx:id="likeNumLabel1" text="160 " textFill="#b5b3b3">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
@@ -108,7 +108,7 @@
                                                 <Image url="@../Images/thumbs-up.png" />
                                              </image>
                                           </ImageView>
-                                          <Label fx:id="likeNumLabe2" text="160 " textFill="#b5b3b3">
+                                          <Label fx:id="likeNumLabel2" text="160 " textFill="#b5b3b3">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
