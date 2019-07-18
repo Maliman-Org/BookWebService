@@ -66,7 +66,7 @@ public class MainPageController implements Initializable {
     private ImageView dislikeIcon2;
 
     @FXML
-    private Label dislikeNumLabel2;
+    private Label dislikeNumLabel2,msgLabel;
 
     @FXML
     void search(MouseEvent event) {
