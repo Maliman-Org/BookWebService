@@ -198,7 +198,7 @@ public class MainPageController implements Initializable {
                     likeNumLabel2.setText(String.valueOf(book2.getLikeNum()));
                     dislikeNumLabel2.setText(String.valueOf(book2.getDislikeNum()));
                     bookTitleLabel2.setText(book2.getTitle());
-                    bookImg2.setImage(new Image("http://localhost/Books/" + book2.getId()+ ".jpg"));
+                    bookImg2.setImage(new Image("http://localhost/" + book2.getId()+ ".jpg"));
                     if (book2.getUserRate() > 0) {
                         if (book2.getUserRate() == 1) {
                             //like
