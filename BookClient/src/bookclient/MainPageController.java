@@ -76,14 +76,14 @@ public class MainPageController implements Initializable {
             if (book1 != null) {
                 if (thisUserLikedBook1== 2) {
                     //the user wants to cancel his dislike
-                    stub.cancelRate(book1,false);
+                    stub.cancelMyRate(book1,false);
                     thisUserLikedBook1=0;
                     updateTheList();
                     return;
                 }else{
                 if (thisUserLikedBook1 != 0) {
                     // the user wants to dislike afer he liked
-                    stub.cancelRate(book1,true);
+                    stub.cancelMyRate(book1,true);
                     thisUserLikedBook1=0;
                 }
                 if (stub.like(book1, false)) {
@@ -98,13 +98,13 @@ public class MainPageController implements Initializable {
         dislikeIcon2.setOnMouseClicked(e -> {
             if (book2 != null) {
                 if (thisUserLikedBook2 == 2) {
-                    stub.cancelRate(book2,false);
+                    stub.cancelMyRate(book2,false);
                     thisUserLikedBook2=0;
                     updateTheList();
                     return;
                 }else{
                 if (thisUserLikedBook2 != 0) {
-                    stub.cancelRate(book2,true);
+                    stub.cancelMyRate(book2,true);
                     thisUserLikedBook2=0;
                 }
                 if (stub.like(book2, false)) {
@@ -119,13 +119,13 @@ public class MainPageController implements Initializable {
         likeIcon1.setOnMouseClicked(e -> {
             if (book1 != null) {
                 if (thisUserLikedBook1 == 1) {
-                    stub.cancelRate(book1,true);
+                    stub.cancelMyRate(book1,true);
                     thisUserLikedBook1=0;
                     updateTheList();
                     return;
                 }else{
                 if (thisUserLikedBook1 != 0) {
-                    stub.cancelRate(book1,false);
+                    stub.cancelMyRate(book1,false);
                     thisUserLikedBook1=0;
                 }
                 if (stub.like(book1, true)) {
@@ -140,13 +140,13 @@ public class MainPageController implements Initializable {
         likeIcon2.setOnMouseClicked(e -> {
             if (book2 != null) {
                 if (thisUserLikedBook2 == 1) {
-                    stub.cancelRate(book2,true);
+                    stub.cancelMyRate(book2,true);
                     thisUserLikedBook2=0;
                     updateTheList();
                     return;
                 }else{
                 if (thisUserLikedBook2 != 0) {
-                    stub.cancelRate(book2,false);
+                    stub.cancelMyRate(book2,false);
                     thisUserLikedBook2=0;
                 }
                 if (stub.like(book2, true)) {
@@ -171,8 +171,8 @@ public class MainPageController implements Initializable {
                 resultBooksContainer.setVisible(true);
                 bookContainer1.setVisible(true);
                 book1 = list.get(0);
-                likeNumLabel1.setText(String.valueOf(book1.getLikeNum()));
-                dislikeNumLabel1.setText(String.valueOf(book1.getDislikeNum()));
+                likeNumLabel1.setText(String.valueOf(book1.getNumberOfLikes()));
+                dislikeNumLabel1.setText(String.valueOf(book1.getNumberOfDislikes()));
                 bookTitleLabel1.setText(book1.getTitle());
                 bookImg1.setImage(new Image("/Books/" + book1.getId()+ ".jpg"));
                 likeIcon1.setImage(new Image("/Images/"+"thumbs-up.png"));
@@ -182,8 +182,8 @@ public class MainPageController implements Initializable {
                     msgLabel.setText("Here are the related TOP 2 Books");
                     bookContainer2.setVisible(true);
                     book2 = list.get(1);
-                    likeNumLabel2.setText(String.valueOf(book2.getLikeNum()));
-                    dislikeNumLabel2.setText(String.valueOf(book2.getDislikeNum()));
+                    likeNumLabel2.setText(String.valueOf(book2.getNumberOfLikes()));
+                    dislikeNumLabel2.setText(String.valueOf(book2.getNumberOfDislikes()));
                     bookTitleLabel2.setText(book2.getTitle());
                     bookImg2.setImage(new Image("/Books/" + book2.getId()+ ".jpg"));
                     likeIcon2.setImage(new Image("/Images/"+"thumbs-up.png"));
