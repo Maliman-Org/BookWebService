@@ -24,9 +24,9 @@
 
 5. Execute the class *BookClient.java*.
 
-6. When the interface of our app appears, type the title of book to search for, then click into search icon. 🔎
+6. When the interface of our app appears, the user types the title of book to search for, then clicks into the search icon. 🔎
 
-7. You can like 👍 or dislike 👎 any searched book.
+7. User can like 👍 or dislike 👎 any searched book.
 
 ## Screenshots 📷
 
