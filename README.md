@@ -7,7 +7,7 @@
 
 1. Turn on your Xampp. 🔛
 
-2. Create new database and name it "bookdb" then import the [sql file] (https://github.com/Maliman-Org/BookWebService/blob/master/BooksService/bookdb.sql) . 💾
+2. Create new database and name it "bookdb" then import the [sql file](https://github.com/Maliman-Org/BookWebService/blob/master/BooksService/bookdb.sql) . 💾
 
 3. Open a cmd window and type :
           * "cd projectpath\BookWebService\BookClient\src\" 
