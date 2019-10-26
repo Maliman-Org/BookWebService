@@ -1,7 +1,14 @@
 # BookWebService 💻 📌 📙 
 
-## Explication of our application
+## What is a *Web service* ❓ 🤷‍♀
+ WS is a server running 🔌 on a computer device, listening 👂 for requests at a particular port over a network, serving web documents (HTML, JSON, XML, Images), and creating web applications services, which serve in solving specific domain problems over the web (www, internet, HTTP).
+ 
+## Idea of the project 💡
 
+ * The purpuse is to create an application to search a given book.
+ * Show its rating.
+ * Must use Web service.
+ 
    
 ## Execution 🔌🔨
 
@@ -10,14 +17,14 @@
 2. Create new database and name it "bookdb" then import the [sql file](https://github.com/Maliman-Org/BookWebService/blob/master/BooksService/bookdb.sql) . 💾
 
 3. Open a cmd window and type :
-          * "cd projectpath\BookWebService\BookClient\src\" 
+          * "cd projectpath\BookWebService\BookClient\src\", 
           * then "wsimport -Xnocompile http://localhost:8585/BookWS?wsdl" in order to generate the stub.
           
 4. Execute the class *BookService.java* to deploy the service.
 
 5. Execute the class *BookClient.java*.
 
-6. When the interface of our app appears, type the title of book to search for the click the search icon. 🔎
+6. When the interface of our app appears, type the title of book to search for, then click into search icon. 🔎
 
 7. You can like 👍 or dislike 👎 any searched book.
 
@@ -47,6 +54,10 @@
 | Like | Dislike |
 | ------------- |:-------------:|
 | ![alt text](https://github.com/Maliman-Org/BookWebService/blob/master/ScreenShots/likeAbook.PNG "like" ) | ![alt text](https://github.com/Maliman-Org/BookWebService/blob/master/ScreenShots/dislikeAbook.PNG "dislike" ) |
+
+### ❗️ PS
+   To understand more the principle of web services, don't hesitate to watch this [video](https://www.youtube.com/watch?v=VNC7OANJL5g&list=PLxr551TUsmAozms7qX1iT8JzAwllHq0vD&fbclid=IwAR1TZ02I6PZJTVfk8kbM74uGEXKSRkDOtmVDwYh8rzotLPiGs7WBho-66Rs) which helped us a lot in our work 😉.
+    
 
 ## IDE & Libraries used 🔧
 
