@@ -68,6 +68,8 @@ public class MainPageController implements Initializable {
         searchBtn.setOnMouseClicked(e -> {
             indication = bookIndicationEDTX.getText();
             if (indication != null) {
+                thisUserLikedBook1=0;
+                thisUserLikedBook2=0;
                 updateTheList();
             }
 
@@ -165,8 +167,6 @@ public class MainPageController implements Initializable {
         if (indication != null) {
             List<Book> list = stub.searchBooks(indication.trim());
             if (list.size() > 0) {
-                thisUserLikedBook1=0;
-                thisUserLikedBook2=0;
                 loupeImg.setVisible(false);
                 resultBooksContainer.setVisible(true);
                 bookContainer1.setVisible(true);
@@ -174,7 +174,7 @@ public class MainPageController implements Initializable {
                 likeNumLabel1.setText(String.valueOf(book1.getNumberOfLikes()));
                 dislikeNumLabel1.setText(String.valueOf(book1.getNumberOfDislikes()));
                 bookTitleLabel1.setText(book1.getTitle());
-                bookImg1.setImage(new Image("/Books/" + book1.getId()+ ".jpg"));
+                bookImg1.setImage(new Image("/Book/" + book1.getId()+ ".jpg"));
                 likeIcon1.setImage(new Image("/Images/"+"thumbs-up.png"));
                 dislikeIcon1.setImage(new Image("/Images/"+"thumb-down.png"));
                 if (list.size() >= 2) {
@@ -185,13 +185,16 @@ public class MainPageController implements Initializable {
                     likeNumLabel2.setText(String.valueOf(book2.getNumberOfLikes()));
                     dislikeNumLabel2.setText(String.valueOf(book2.getNumberOfDislikes()));
                     bookTitleLabel2.setText(book2.getTitle());
-                    bookImg2.setImage(new Image("/Books/" + book2.getId()+ ".jpg"));
+                    bookImg2.setImage(new Image("/Book/" + book2.getId()+ ".jpg"));
                     likeIcon2.setImage(new Image("/Images/"+"thumbs-up.png"));
                     dislikeIcon2.setImage(new Image("/Images/"+"thumb-down.png"));
                 } else {
                     bookContainer2.setVisible(false);
                 }
+        
             } else {
+                thisUserLikedBook1=0;
+                thisUserLikedBook2=0;
                 bookContainer2.setVisible(false);
                 bookContainer1.setVisible(false);
                 indication = null;
@@ -202,6 +205,10 @@ public class MainPageController implements Initializable {
             }
 
         }
+        if(thisUserLikedBook1==1) likeIcon1.setImage(new Image("/Images/"+"thumbs-up-hand-symbol.png"));
+        else if(thisUserLikedBook1==2) dislikeIcon1.setImage(new Image("/Images/"+"thumbs-down-silhouette.png"));
+        if(thisUserLikedBook2==1) likeIcon2.setImage(new Image("/Images/"+"thumbs-up-hand-symbol.png"));
+        else if(thisUserLikedBook2==2) dislikeIcon2.setImage(new Image("/Images/"+"thumbs-down-silhouette.png"));
     }
 
 }
