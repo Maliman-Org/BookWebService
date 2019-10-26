@@ -21,7 +21,8 @@ import javax.jws.WebService;
 @WebService(name = "BookWs")
 public class BookWS {
 
-    public static final String DATABASE_SERVER_PATH = "jdbc:mysql://localhost:3306/bookdb",
+    public static final String 
+            DATABASE_SERVER_PATH = "jdbc:mysql://localhost:3306/bookdb",
             DATABASE_USER = "root",
             DATABASE_PASSWORD = "";
     public static Connection connection;
@@ -48,35 +49,36 @@ public class BookWS {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
-    @WebMethod(operationName = "cancelRate")
-    public boolean cancelRate(@WebParam(name = "theBook") Book book) {
-        return decrease(book, (book.getUserRate() == 1));
+    @WebMethod(operationName = "cancelMyRate")
+    public boolean cancelRate(@WebParam(name = "ofthisBook") Book book
+            ,@WebParam(name = "thatIliked") boolean like) {
+        return decrease(book, like);
     }
 
     @WebMethod
-    public boolean like(@WebParam(name = "book") Book book, @WebParam(name = "iLike") boolean liked) {
-        boolean b = false;
+    public boolean like(@WebParam(name = "thisBook") Book book, @WebParam(name = "iLikeIt") boolean liked) {
+        boolean actionWellDone = false;
         if (liked) {
-            b = increase(book, true);
+            actionWellDone = increase(book, true);
         } else {
-            b = increase(book, false);
+            actionWellDone = increase(book, false);
         }
-        return b;
+        return actionWellDone;
     }
 
     @WebMethod(operationName = "searchBooks")
-    
-    public ArrayList<Book> getBooks(@WebParam(name = "language") String indication) {
+    public ArrayList<Book> getBooks(@WebParam(name = "whateverYourRemeberAboutTheTitle") String indication) {
         try {
             ArrayList<Book> list = new ArrayList<>();
             Book aBook;
-            String query = "SELECT * FROM `livre` WHERE `title` LIKE '%"+indication+"%' ORDER BY `livre`.`likes` DESC";
+            String query = "SELECT * FROM `book` WHERE `title` LIKE '%"+indication+"%' ORDER BY `book`.`likes` DESC";
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 aBook = new Book(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3),
-                        resultSet.getInt(4), resultSet.getInt(5),resultSet.getDate(6));
+                        resultSet.getInt(4));
                 list.add(aBook);
             }
             return list;
@@ -92,10 +94,10 @@ public class BookWS {
         try {
             String query;
             if (like) {
-                query = "UPDATE `livre` SET `likes`=`likes`+1 , `userRate`=1 WHERE "
+                query = "UPDATE `book` SET `likes`=`likes`+1 WHERE "
                         + "(`id`=?);";
             } else {
-                query = "UPDATE `livre` SET `dislikes`=`dislikes`+1 , `userRate`=2 WHERE "
+                query = "UPDATE `book` SET `dislikes`=`dislikes`+1 WHERE "
                         + "(`id`=?);";
             }
             preparedStatement = connection.prepareCall(query);
@@ -104,8 +106,6 @@ public class BookWS {
                 if (preparedStatement.executeUpdate() == 0) {
                     return false;
                 } else {
-                    if(like) book.setUserRate(1);
-                    else book.setUserRate(2);
                     return true;
                 }
             } catch (SQLException ex) {
@@ -120,10 +120,10 @@ public class BookWS {
     private boolean decrease(Book book, boolean like) {
         String query;
         if (like) {
-            query = "UPDATE `livre` SET `likes`=`likes`-1 , `userRate`=0 WHERE "
+            query = "UPDATE `book` SET `likes`=`likes`-1 WHERE "
                     + "(`id`=?);";
         } else {
-            query = "UPDATE `livre` SET `dislikes`=`dislikes`-1 , `userRate`=0 WHERE "
+            query = "UPDATE `book` SET `dislikes`=`dislikes`-1  WHERE "
                     + "(`id`=?);";
         }
         try {
@@ -134,7 +134,6 @@ public class BookWS {
                 if (preparedStatement.executeUpdate() == 0) {
                     return false;
                 } else {
-                    book.setUserRate(1);
                     return true;
                 }
             } catch (SQLException ex) {

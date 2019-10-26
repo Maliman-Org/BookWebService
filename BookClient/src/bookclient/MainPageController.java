@@ -19,6 +19,7 @@ import java.util.List;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -26,57 +27,37 @@ import javafx.scene.layout.VBox;
  * @author Manno
  */
 public class MainPageController implements Initializable {
-
+    Book book1, book2;
+    int thisUserLikedBook1,thisUserLikedBook2; // 1 for like ,2 for dilike and 0 for none
     BookWs stub;
     @FXML
     private JFXTextField bookIndicationEDTX;
 
     @FXML
-    private VBox bookContainer1;
+    private VBox bookContainer1,bookContainer2;
 
     @FXML
-    private ImageView bookImg1;
+    private ImageView bookImg1,bookImg2,
+                  likeIcon1,likeIcon2,
+                  dislikeIcon1,dislikeIcon2;
 
     @FXML
-    private Label bookTitleLabel1;
+    private Label bookTitleLabel1,bookTitleLabel2,
+                  likeNumLabel1, likeNumLabel2,
+                  dislikeNumLabel1,dislikeNumLabel2;
+    @FXML
+    private ImageView loupeImg;
 
     @FXML
-    private ImageView likeIcon1;
+    private ImageView searchBtn;
 
     @FXML
-    private Label likeNumLabel2, likeNumLabel1;
-
+    private Label msgLabel;
+    
     @FXML
-    private ImageView dislikeIcon1;
-
-    @FXML
-    private Label dislikeNumLabel1;
-
-    @FXML
-    private VBox bookContainer2;
-
-    @FXML
-    private ImageView bookImg2;
-
-    @FXML
-    private Label bookTitleLabel2;
-
-    @FXML
-    private ImageView likeIcon2,loupeImg;
-
-    @FXML
-    private ImageView dislikeIcon2, searchBtn;
-
-    @FXML
-    private Label dislikeNumLabel2, msgLabel;
-
-    Book book1, book2;
+    private AnchorPane resultBooksContainer;
+    
     String indication;
-
-    @FXML
-    public void search(MouseEvent event) {
-
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -93,69 +74,87 @@ public class MainPageController implements Initializable {
         });
         dislikeIcon1.setOnMouseClicked(e -> {
             if (book1 != null) {
-                if (book1.getUserRate() == 2) {
-                    stub.cancelRate(book1);
+                if (thisUserLikedBook1== 2) {
+                    //the user wants to cancel his dislike
+                    stub.cancelRate(book1,false);
+                    thisUserLikedBook1=0;
                     updateTheList();
                     return;
-                }
-                if (book1.getUserRate() != 0) {
-                    stub.cancelRate(book1);
+                }else{
+                if (thisUserLikedBook1 != 0) {
+                    // the user wants to dislike afer he liked
+                    stub.cancelRate(book1,true);
+                    thisUserLikedBook1=0;
                 }
                 if (stub.like(book1, false)) {
+                    thisUserLikedBook1=2;
                     updateTheList();
                 } else {
-                    //error like
+                    //error dislike
                 }
+            }
             }
         });
         dislikeIcon2.setOnMouseClicked(e -> {
             if (book2 != null) {
-                if (book2.getUserRate() == 2) {
-                    stub.cancelRate(book2);
+                if (thisUserLikedBook2 == 2) {
+                    stub.cancelRate(book2,false);
+                    thisUserLikedBook2=0;
                     updateTheList();
                     return;
-                }
-                if (book2.getUserRate() != 0) {
-                    stub.cancelRate(book2);
+                }else{
+                if (thisUserLikedBook2 != 0) {
+                    stub.cancelRate(book2,true);
+                    thisUserLikedBook2=0;
                 }
                 if (stub.like(book2, false)) {
+                    thisUserLikedBook2=2;
                     updateTheList();
                 } else {
                     //error like
+                }
                 }
             }
         });
         likeIcon1.setOnMouseClicked(e -> {
             if (book1 != null) {
-                if (book1.getUserRate() == 1) {
-                    stub.cancelRate(book1);
+                if (thisUserLikedBook1 == 1) {
+                    stub.cancelRate(book1,true);
+                    thisUserLikedBook1=0;
                     updateTheList();
                     return;
-                }
-                if (book1.getUserRate() != 0) {
-                    stub.cancelRate(book1);
+                }else{
+                if (thisUserLikedBook1 != 0) {
+                    stub.cancelRate(book1,false);
+                    thisUserLikedBook1=0;
                 }
                 if (stub.like(book1, true)) {
+                    thisUserLikedBook1=1;
                     updateTheList();
                 } else {
                     //error like
                 }
             }
+            }
         });
         likeIcon2.setOnMouseClicked(e -> {
             if (book2 != null) {
-                if (book2.getUserRate() == 1) {
-                    stub.cancelRate(book2);
+                if (thisUserLikedBook2 == 1) {
+                    stub.cancelRate(book2,true);
+                    thisUserLikedBook2=0;
                     updateTheList();
                     return;
-                }
-                if (book2.getUserRate() != 0 && book2.getUserRate() != 1) {
-                    stub.cancelRate(book2);
+                }else{
+                if (thisUserLikedBook2 != 0) {
+                    stub.cancelRate(book2,false);
+                    thisUserLikedBook2=0;
                 }
                 if (stub.like(book2, true)) {
+                    thisUserLikedBook2=1;
                     updateTheList();
                 } else {
                     //error like
+                }
                 }
             }
         });
@@ -164,32 +163,20 @@ public class MainPageController implements Initializable {
 
     private void updateTheList() {
         if (indication != null) {
-            List<Book> list = stub.searchBooks(indication.trim().toLowerCase());
+            List<Book> list = stub.searchBooks(indication.trim());
             if (list.size() > 0) {
+                thisUserLikedBook1=0;
+                thisUserLikedBook2=0;
                 loupeImg.setVisible(false);
-                msgLabel.setVisible(false);
+                resultBooksContainer.setVisible(true);
                 bookContainer1.setVisible(true);
                 book1 = list.get(0);
                 likeNumLabel1.setText(String.valueOf(book1.getLikeNum()));
                 dislikeNumLabel1.setText(String.valueOf(book1.getDislikeNum()));
                 bookTitleLabel1.setText(book1.getTitle());
-                bookImg1.setImage(new Image("http://localhost/Books/" + book1.getId()+ ".jpg"));
-                if (book1.getUserRate() > 0) {
-                    
-                    if (book1.getUserRate() == 1) {
-                        //like
-                        likeIcon1.setImage(new Image("http://localhost/Books/"+"thumbs-up-hand-symbol.png"));
-                        dislikeIcon1.setImage(new Image("http://localhost/Books/"+"thumb-down.png"));
-                    } else {
-                        //dislike
-                        likeIcon1.setImage(new Image("http://localhost/Books/"+"thumbs-up.png"));
-                        dislikeIcon1.setImage(new Image("http://localhost/Books/"+"thumbs-down-silhouette.png"));
-                    }
-                } else {
-                    //none
-                    likeIcon1.setImage(new Image("http://localhost/Books/"+"thumbs-up.png"));
-                    dislikeIcon1.setImage(new Image("http://localhost/Books/"+"thumb-down.png"));
-                }
+                bookImg1.setImage(new Image("/Books/" + book1.getId()+ ".jpg"));
+                likeIcon1.setImage(new Image("/Images/"+"thumbs-up.png"));
+                dislikeIcon1.setImage(new Image("/Images/"+"thumb-down.png"));
                 if (list.size() >= 2) {
                     msgLabel.setVisible(true);
                     msgLabel.setText("Here are the related TOP 2 Books");
@@ -198,22 +185,9 @@ public class MainPageController implements Initializable {
                     likeNumLabel2.setText(String.valueOf(book2.getLikeNum()));
                     dislikeNumLabel2.setText(String.valueOf(book2.getDislikeNum()));
                     bookTitleLabel2.setText(book2.getTitle());
-                    bookImg2.setImage(new Image("http://localhost/" + book2.getId()+ ".jpg"));
-                    if (book2.getUserRate() > 0) {
-                        if (book2.getUserRate() == 1) {
-                            //like
-                            likeIcon2.setImage(new Image("http://localhost/Books/"+"thumbs-up-hand-symbol.png"));
-                            dislikeIcon2.setImage(new Image("http://localhost/Books/"+"thumb-down.png"));
-                        } else {
-                            //dislike
-                            likeIcon2.setImage(new Image("http://localhost/Books/"+"thumbs-up.png"));
-                            dislikeIcon2.setImage(new Image("http://localhost/Books/"+"thumbs-down-silhouette.png"));
-                        }
-                    } else {
-                        //none
-                        likeIcon2.setImage(new Image("http://localhost/Books/"+"thumbs-up.png"));
-                        dislikeIcon2.setImage(new Image("http://localhost/Books/"+"thumb-down.png"));
-                    }
+                    bookImg2.setImage(new Image("/Books/" + book2.getId()+ ".jpg"));
+                    likeIcon2.setImage(new Image("/Images/"+"thumbs-up.png"));
+                    dislikeIcon2.setImage(new Image("/Images/"+"thumb-down.png"));
                 } else {
                     bookContainer2.setVisible(false);
                 }

@@ -37,116 +37,120 @@
                   </ImageView>
                </children>
             </HBox>
-            <AnchorPane layoutX="101.0" layoutY="223.0">
+            <StackPane layoutX="66.0" layoutY="234.0">
                <children>
-                  <HBox layoutY="56.0" spacing="60.0">
-                     <children>
-                        <VBox fx:id="bookContainer1" alignment="CENTER" prefHeight="196.0" prefWidth="295.0" spacing="5.0" visible="false">
-                           <children>
-                              <ImageView fx:id="bookImg1" fitHeight="167.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../../../../xampp/htdocs/Books/7.jpg" />
-                                 </image>
-                              </ImageView>
-                              <Label fx:id="bookTitleLabel1" prefHeight="29.0" prefWidth="293.0" text="Java programing language" textFill="#7178b9">
-                                 <font>
-                                    <Font name="Dubai Regular" size="18.0" />
-                                 </font>
-                              </Label>
-                              <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0" spacing="10.0">
-                                 <children>
-                                    <HBox alignment="BOTTOM_LEFT" spacing="5.0">
-                                       <children>
-                                          <ImageView fx:id="likeIcon1" fitHeight="27.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../Images/thumbs-up.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label fx:id="likeNumLabel1" text="160 " textFill="#b5b3b3">
-                                             <font>
-                                                <Font name="System Bold" size="14.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="BOTTOM_LEFT" layoutX="66.0" layoutY="10.0" spacing="5.0">
-                                       <children>
-                                          <ImageView fx:id="dislikeIcon1" fitHeight="27.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../Images/thumb-down.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label fx:id="dislikeNumLabel1" text="20" textFill="#b5b3b3">
-                                             <font>
-                                                <Font name="System Bold" size="14.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                        <VBox fx:id="bookContainer2" alignment="CENTER" prefHeight="196.0" prefWidth="295.0" spacing="5.0" visible="false">
-                           <children>
-                              <ImageView fx:id="bookImg2" fitHeight="154.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../../../../xampp/htdocs/Books/8.jpg" />
-                                 </image>
-                              </ImageView>
-                              <Label fx:id="bookTitleLabel2" prefHeight="29.0" prefWidth="293.0" text="Java programing language" textFill="#7178b9">
-                                 <font>
-                                    <Font name="Dubai Regular" size="18.0" />
-                                 </font>
-                              </Label>
-                              <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0" spacing="10.0">
-                                 <children>
-                                    <HBox alignment="BOTTOM_LEFT" spacing="5.0">
-                                       <children>
-                                          <ImageView fx:id="likeIcon2" fitHeight="27.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../Images/thumbs-up.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label fx:id="likeNumLabel2" text="160 " textFill="#b5b3b3">
-                                             <font>
-                                                <Font name="System Bold" size="14.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="BOTTOM_LEFT" layoutX="66.0" layoutY="10.0" spacing="5.0">
-                                       <children>
-                                          <ImageView fx:id="dislikeIcon2" fitHeight="27.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../Images/thumb-down.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label fx:id="dislikeNumLabel2" text="20" textFill="#b5b3b3">
-                                             <font>
-                                                <Font name="System Bold" size="14.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <Label fx:id="msgLabel" layoutX="171.0" prefHeight="17.0" prefWidth="306.0" text="Here are the related TOP 2 Books" textFill="#a8a0a0" visible="false">
-                     <font>
-                        <Font name="Dubai Light" size="20.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="loupeImg" fitHeight="176.0" fitWidth="218.0" layoutX="207.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="loupeImg" fitHeight="176.0" fitWidth="218.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/loupeb.png" />
                      </image>
                   </ImageView>
+                  <AnchorPane fx:id="resultBooksContainer">
+                     <children>
+                        <HBox layoutY="56.0" spacing="60.0">
+                           <children>
+                              <VBox fx:id="bookContainer1" alignment="CENTER" prefHeight="196.0" prefWidth="330.0" spacing="5.0" visible="false">
+                                 <children>
+                                    <ImageView fx:id="bookImg1" fitHeight="154.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../../../../xampp/htdocs/Books/7.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="bookTitleLabel1" prefHeight="32.0" prefWidth="331.0" text="Java programing language" textFill="#7178b9">
+                                       <font>
+                                          <Font name="Dubai Regular" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
+                                       <children>
+                                          <HBox alignment="BOTTOM_LEFT" spacing="5.0">
+                                             <children>
+                                                <ImageView fx:id="likeIcon1" fitHeight="27.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/thumbs-up.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label fx:id="likeNumLabel1" text="160 " textFill="#b5b3b3">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="BOTTOM_LEFT" layoutX="66.0" layoutY="10.0" spacing="5.0">
+                                             <children>
+                                                <ImageView fx:id="dislikeIcon1" fitHeight="27.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/thumb-down.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label fx:id="dislikeNumLabel1" text="20" textFill="#b5b3b3">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="bookContainer2" alignment="CENTER" prefHeight="201.0" prefWidth="330.0" spacing="5.0" visible="false">
+                                 <children>
+                                    <ImageView fx:id="bookImg2" fitHeight="154.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../../../../xampp/htdocs/Books/8.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="bookTitleLabel2" prefHeight="32.0" prefWidth="330.0" text="Java programing language" textFill="#7178b9">
+                                       <font>
+                                          <Font name="Dubai Regular" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
+                                       <children>
+                                          <HBox alignment="BOTTOM_LEFT" spacing="5.0">
+                                             <children>
+                                                <ImageView fx:id="likeIcon2" fitHeight="27.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/thumbs-up.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label fx:id="likeNumLabel2" text="160 " textFill="#b5b3b3">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="BOTTOM_LEFT" layoutX="66.0" layoutY="10.0" spacing="5.0">
+                                             <children>
+                                                <ImageView fx:id="dislikeIcon2" fitHeight="27.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/thumb-down.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label fx:id="dislikeNumLabel2" text="20" textFill="#b5b3b3">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <Label fx:id="msgLabel" layoutX="2.0" prefHeight="35.0" prefWidth="714.0" text="Here are the related TOP 2 Books" textFill="#a8a0a0" visible="false">
+                           <font>
+                              <Font name="Dubai Light" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
                </children>
-            </AnchorPane>
+            </StackPane>
             <Label layoutX="239.0" layoutY="43.0" prefHeight="51.0" prefWidth="373.0" text="Maliman Book Service" textFill="WHITE">
                <font>
                   <Font name="Dubai Medium" size="36.0" />

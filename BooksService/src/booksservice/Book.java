@@ -18,21 +18,16 @@ public class Book implements Serializable{
     
     private int id;
     private String title;
-    private int likeNum,dislikeNum;
-    private int userRate;
-    @XmlTransient
-    private Date createDate;
+    private int numberOfLikes,numberOfDislikes;
 
     public Book() {
     }
 
-    public Book(int id, String title, int likeNum, int dislikeNum, int userRate,Date date) {
+    public Book(int id, String title, int likeNum, int dislikeNum) {
         this.id = id;
         this.title = title;
-        this.likeNum = likeNum;
-        this.dislikeNum = dislikeNum;
-        this.userRate = userRate;
-        createDate=date;
+        this.numberOfLikes = likeNum;
+        this.numberOfDislikes = dislikeNum;
     }
     
     public int getId() {
@@ -52,35 +47,19 @@ public class Book implements Serializable{
     }
 
     public int getLikeNum() {
-        return likeNum;
+        return numberOfLikes;
     }
 
     public void setLikeNum(int likeNum) {
-        this.likeNum = likeNum;
+        this.numberOfLikes = likeNum;
     }
 
     public int getDislikeNum() {
-        return dislikeNum;
+        return numberOfDislikes;
     }
 
     public void setDislikeNum(int dislikeNum) {
-        this.dislikeNum = dislikeNum;
-    }
-
-    public int getUserRate() {
-        return userRate;
-    }
-
-    public void setUserRate(int userRate) {
-        this.userRate = userRate;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+        this.numberOfDislikes = dislikeNum;
     }
     
     
