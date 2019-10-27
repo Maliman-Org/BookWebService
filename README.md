@@ -1,7 +1,7 @@
 # BookWebService 💻 📌 📙 
 
 ## What is a *Web service* ❓ 🤷‍♀
- WS is a server running 🔌 on a computer device, listening 👂 for requests at a particular port over a network, serving web documents (HTML, JSON, XML, Images), and creating web applications services, which serve in solving specific domain problems over the web (www, internet, HTTP).
+ **WS** is a server running 🔌 on a computer device, listening 👂 for requests at a particular port over a network, serving web documents (HTML, JSON, XML, Images), and creating web applications services, which serve in solving specific domain problems over the web (www, internet, HTTP).
  
 ## Idea of the project 💡
 
