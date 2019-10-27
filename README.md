@@ -17,8 +17,9 @@
 2. Create new database and name it "bookdb" then import the [sql file](https://github.com/Maliman-Org/BookWebService/blob/master/BooksService/bookdb.sql) . 💾
 
 3. Open a cmd window and type :
-          * "cd projectpath\BookWebService\BookClient\src\", 
-          * then "wsimport -Xnocompile http://localhost:8585/BookWS?wsdl" in order to generate the stub.
+          * " cd projectpath\BookWebService\BookClient\src\ " ,
+          
+          * then " wsimport -Xnocompile http://localhost:8585/BookWS?wsdl " in order to generate the stub.
           
 4. Execute the class *BookService.java* to deploy the service.
 
